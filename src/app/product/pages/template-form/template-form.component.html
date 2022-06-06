@@ -1,0 +1,36 @@
+<!-- https://www.youtube.com/watch?v=ftQLr5aNZNU&list=PL1AL6gEQcOo-lotgLpqaaliobd-x-W5Hu&index=8 -->
+
+<div class="container">
+  <div class="col-8 offset-2">
+    <form #productForm="ngForm">
+      <div class="mt3">
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" class="form-control"
+        minlength="5"
+        maxlength="20"
+        name="name" 
+        required 
+        [(ngModel)]="product.name" 
+        #nameControl="ngModel" 
+        placeholder="Enter your name." />
+
+        <div *ngIf=" nameControl.touched && nameControl.invalid" class="text-danger">please enter your name.</div>
+      </div>
+
+      <div class="mt-3">
+        <label for="name" class="form-label">Email:</label>
+        <input class="form-control"
+        type="email"
+        name="email"
+        required
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        [(ngModel)]="product.email"
+        #emailControl="ngModel"
+        placeholder="Enter your email." >
+      </div>
+      <div class="mt-3">
+        <button [disabled]="productForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
